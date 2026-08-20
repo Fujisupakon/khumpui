@@ -1,0 +1,1355 @@
+<title>คุ้มปุ๋ย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  /* พื้น — เขียวเซจอมเทา ไม่ขาวจ้า ไม่ทึบ */
+  --ground:#E7EBE1;
+  --canvas:#F3F5EF;
+  --surface:#FFFFFF;
+  --surface-2:#F1F4EC;
+  --line:#D4DBCA;
+  --line-soft:#E3E8DA;
+  /* ตัวหนังสือ — เขียวเข้มแทนดำ อ่านนุ่มกว่า */
+  --ink:#26361F;
+  --ink-2:#3C4936;
+  --muted:#6A7563;
+  /* สีเน้น — เหลืองฟางข้าว */
+  --gold:#D08C1E;
+  --gold-deep:#B87614;
+  --gold-text:#9C6209;
+  --gold-soft:#F8EEDA;
+  --on-gold:#3A2606;
+  --accent:var(--gold);
+  --accent-soft:var(--gold-soft);
+  --accent-ink:#8A5A0C;
+  /* สถานะ — ใบไม้ กับ ดินเผา */
+  --good:#3E7C4F;
+  --good-soft:#E0EFE3;
+  --good-vivid:#3E7C4F;
+  --owe:#AD452E;
+  --owe-deep:#8F3722;
+  --owe-soft:#F8E8E2;
+  --owe-border:#DDB4A6;
+  --owe-vivid:#AD452E;
+  /* คงตัวแปรเดิมไว้ไม่ให้อะไรพัง */
+  --navy:#26361F;
+  --navy-2:#3C4936;
+  --navy-deep:#1B2716;
+  --navy-soft:#E3E8DA;
+  --phone-shell:#FFFFFF;
+  --phone-edge:rgba(38,54,31,.14);
+  --on-good:#FFFFFF;
+  --glow-good:0 2px 10px rgba(208,140,30,.28);
+  --shadow:0 1px 2px rgba(38,54,31,.05),0 6px 20px rgba(38,54,31,.07);
+  --shadow-phone:0 3px 10px rgba(38,54,31,.09),0 22px 50px rgba(38,54,31,.16);
+}
+/* หน้านี้ใช้โทนสว่างอย่างเดียวโดยตั้งใจ ไม่มีโหมดมืด
+   ทุกสีถูกกำหนดชัดเจนที่ :root จึงแสดงผลเหมือนกันทุกเครื่อง */
+
+*{box-sizing:border-box}
+h1,h2,h3,h4,h5,.card-title,.side .brand,.stat .sv,.swap .fig,.row .v{color:var(--ink)}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink-2);
+  font-family:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 96px}
+
+/* ---------- header ---------- */
+.masthead{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 18px;
+}
+.masthead h1{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-weight:700;font-size:clamp(38px,7vw,62px);line-height:1.05;
+  letter-spacing:-.02em;margin:0 0 6px;text-wrap:balance;
+}
+.masthead .sub{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-weight:500;font-size:clamp(17px,2.4vw,21px);color:var(--gold-text);
+  margin:0 0 22px;
+}
+.masthead p.lede{max-width:60ch;color:var(--ink-2);margin:0 0 26px;font-size:16.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;
+  padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  color:var(--ink-2);background:var(--surface);
+}
+.chip.mark{background:var(--gold-soft);border-color:transparent;color:var(--accent-ink)}
+
+.disclaimer{
+  margin:28px 0 0;padding:13px 16px;border-radius:10px;
+  background:var(--surface);border:1px solid var(--line-soft);
+  font-size:14px;color:var(--muted);max-width:76ch;
+}
+
+/* ---------- stage sections ---------- */
+.stage{padding:56px 0 8px;border-bottom:1px solid var(--line-soft)}
+.stage:last-of-type{border-bottom:0}
+.stage-head{display:flex;gap:18px;align-items:baseline;margin-bottom:6px}
+.stage-num{
+  font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  color:var(--accent);letter-spacing:.08em;flex:none;padding-top:6px;
+}
+.stage-head h2{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-weight:600;font-size:clamp(24px,3.6vw,32px);margin:0;letter-spacing:-.01em;
+}
+.stage-when{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);
+  margin:0 0 4px 42px;letter-spacing:.04em;
+}
+.stage-note{margin:0 0 34px 42px;color:var(--ink-2);max-width:64ch;font-size:15.5px}
+
+.rack{
+  display:grid;gap:36px 28px;
+  grid-template-columns:repeat(auto-fit,minmax(272px,1fr));
+  align-items:start;
+}
+
+/* ---------- phone ---------- */
+.unit{display:flex;flex-direction:column;gap:14px}
+.phone{
+  background:var(--phone-shell);
+  border-radius:34px;padding:9px;box-shadow:var(--shadow-phone);
+  max-width:300px;width:100%;margin:0 auto;
+}
+.screen{
+  background:var(--surface);border-radius:26px;overflow:hidden;
+  display:flex;flex-direction:column;min-height:520px;
+}
+.statusbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 18px 4px;font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;color:var(--muted);background:var(--surface);
+}
+.appbar{
+  padding:6px 18px 12px;display:flex;align-items:center;gap:9px;
+  border-bottom:1px solid var(--line-soft);background:var(--surface);
+}
+.appbar .back{color:var(--muted);font-size:15px;line-height:1}
+.appbar h3{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-size:15px;font-weight:600;margin:0;letter-spacing:-.005em;
+}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:13px;flex:1}
+
+.tabbar{
+  display:flex;border-top:1px solid var(--line-soft);
+  background:var(--surface);
+}
+.tabbar span{
+  flex:1;text-align:center;padding:9px 2px 11px;font-size:10.5px;color:var(--muted);
+  display:flex;flex-direction:column;gap:3px;align-items:center;
+}
+.tabbar span.on{color:var(--accent-ink);font-weight:600}
+.tabbar b{font-size:14px;line-height:1;font-weight:400}
+
+/* screen atoms */
+.hello{font-size:13px;color:var(--muted);margin:0}
+.hello strong{color:var(--ink);font-weight:600}
+.hero-num{
+  background:var(--gold-soft);border-radius:14px;padding:14px 15px;
+}
+.hero-num .lbl{font-size:11.5px;color:var(--accent-ink);margin:0 0 3px;letter-spacing:.02em}
+.hero-num .val{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-size:31px;font-weight:700;color:var(--accent-ink);line-height:1.1;margin:0;
+  font-variant-numeric:tabular-nums;
+}
+.hero-num .foot{font-size:11.5px;color:var(--accent-ink);opacity:.85;margin:4px 0 0}
+
+.card{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:var(--surface)}
+.card.flat{background:var(--surface-2);border-color:var(--line-soft)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
+.card-title{font-size:13.5px;font-weight:600;margin:0;color:var(--ink)}
+.card-sub{font-size:11.5px;color:var(--muted);margin:0;font-family:"IBM Plex Mono",monospace}
+
+.pill{
+  font-size:10.5px;padding:3px 9px;border-radius:999px;font-weight:600;flex:none;
+  letter-spacing:.01em;
+}
+.pill.wait{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.pill.go{background:var(--good);color:#fff}
+.pill.warn{background:var(--gold);color:var(--on-gold)}
+.pill.owe{background:var(--owe);color:#fff}
+
+.rows{display:flex;flex-direction:column;gap:0}
+.row{
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:13px;
+}
+.row:last-child{border-bottom:0}
+.row .k{color:var(--muted)}
+.row .v{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500}
+.row.total{border-top:1px solid var(--line);border-bottom:0;margin-top:3px;padding-top:10px}
+.row.total .k{color:var(--ink);font-weight:600;font-family:"IBM Plex Sans Thai",sans-serif}
+.row.total .v{font-size:16px;font-weight:600}
+.v.good{color:var(--good)}
+.v.owe{color:var(--owe)}
+
+.swap{display:flex;align-items:center;gap:10px;margin:2px 0 4px}
+.swap .old,.swap .new{flex:1;border-radius:11px;padding:9px 11px}
+.swap .old{background:var(--surface-2);border:1px solid var(--line-soft)}
+.swap .new{background:var(--good-soft)}
+.swap .cap{font-size:10.5px;color:var(--muted);margin:0 0 1px}
+.swap .new .cap{color:var(--good)}
+.swap .fig{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;font-weight:700;
+  font-size:19px;margin:0;font-variant-numeric:tabular-nums;
+}
+.swap .new .fig{color:var(--good)}
+.swap .unit-s{font-size:10.5px;font-weight:500}
+.swap .arw{color:var(--muted);font-size:14px;flex:none}
+
+.guarantee{
+  border:1.5px dashed var(--accent);border-radius:13px;padding:12px 14px;
+  background:var(--accent-soft);
+}
+.guarantee .g-lbl{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent-ink);margin:0 0 5px;
+}
+.guarantee p{margin:0;font-size:12.5px;color:var(--accent-ink);line-height:1.55}
+.guarantee strong{font-weight:600}
+
+.btn{
+  display:block;text-align:center;border-radius:11px;padding:12px;
+  font-size:14px;font-weight:600;letter-spacing:.01em;
+}
+.btn.primary{background:var(--gold);color:var(--on-gold)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink-2)}
+
+.tiny{font-size:11.5px;color:var(--muted);margin:0;line-height:1.5}
+
+.timeline{display:flex;flex-direction:column;gap:0;margin:2px 0}
+.tl{display:flex;gap:11px;position:relative;padding-bottom:15px}
+.tl:last-child{padding-bottom:0}
+.tl .dot{
+  width:10px;height:10px;border-radius:50%;flex:none;margin-top:5px;
+  background:var(--good);position:relative;z-index:1;
+}
+.tl.future .dot{background:var(--line);border:2px solid var(--line)}
+.tl::before{
+  content:"";position:absolute;left:4.5px;top:14px;bottom:0;width:1px;background:var(--line);
+}
+.tl:last-child::before{display:none}
+.tl .tl-b{flex:1}
+.tl .tl-t{font-size:13px;font-weight:600;margin:0;line-height:1.4}
+.tl.future .tl-t{color:var(--muted);font-weight:500}
+.tl .tl-d{font-size:11.5px;color:var(--muted);margin:1px 0 0;font-family:"IBM Plex Mono",monospace}
+
+.bars{display:flex;flex-direction:column;gap:9px;margin:3px 0 1px}
+.bar-row .bl{display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px}
+.bar-row .bl span:last-child{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.track{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line-soft)}
+.fill{height:100%;border-radius:99px}
+.fill.was{background:var(--owe);opacity:.55}
+.fill.now{background:var(--accent)}
+.fill.rec{background:var(--good)}
+
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.box{
+  width:17px;height:17px;border-radius:5px;border:1.5px solid var(--good);flex:none;margin-top:2px;
+  background:var(--good);color:var(--on-good);font-size:11px;display:flex;align-items:center;justify-content:center;
+}
+
+/* caption under phone */
+.cap-block{max-width:300px;margin:0 auto;width:100%}
+.cap-block h4{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-size:15px;font-weight:600;margin:0 0 5px;
+}
+.cap-block p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.6}
+.cap-block .why{
+  margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft);
+  font-size:12.5px;color:var(--muted);
+}
+.cap-block .why b{color:var(--accent-ink);font-weight:600}
+
+/* ---------- closing sections ---------- */
+.panel{
+  margin-top:56px;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:30px 28px;box-shadow:var(--shadow);
+}
+.panel h2{
+  font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif;
+  font-size:22px;font-weight:600;margin:0 0 6px;
+}
+.panel > p.intro{margin:0 0 22px;color:var(--ink-2);max-width:66ch;font-size:15.5px}
+.split{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mini h5{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500;
+}
+.mini ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.mini li{font-size:14.5px;color:var(--ink-2);padding-left:19px;position:relative;line-height:1.55}
+.mini li::before{
+  content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;
+  background:var(--accent);
+}
+.mini.no li::before{background:var(--owe);opacity:.6}
+.mini li b{color:var(--ink);font-weight:600}
+
+.tablewrap{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+}
+td:first-child{font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+
+footer{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--muted);
+}
+
+/* ---------- desktop frame (factory side) ---------- */
+.deskunit{margin-top:34px}
+.deskunit:first-of-type{margin-top:26px}
+.window{
+  border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow-phone);background:var(--surface);
+}
+.winbar{
+  display:flex;align-items:center;gap:9px;padding:9px 14px;
+  background:var(--surface-2);border-bottom:1px solid var(--line-soft);
+}
+.winbar .dots{display:flex;gap:5px}
+.winbar .dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.winbar .url{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:6px;
+  padding:3px 12px;margin-left:6px;
+}
+.deskbody{display:flex;min-height:400px}
+.side{
+  width:172px;flex:none;background:var(--surface-2);
+  border-right:1px solid var(--line-soft);padding:15px 0;
+}
+.side .brand{
+  font-family:"Bai Jamjuree",sans-serif;font-weight:700;font-size:15px;
+  padding:0 16px 14px;margin:0;
+}
+.side .brand small{display:block;font-family:"IBM Plex Sans Thai",sans-serif;font-weight:400;font-size:10.5px;color:var(--muted);letter-spacing:0}
+.side nav{display:flex;flex-direction:column}
+.side a{
+  padding:8px 16px;font-size:13px;color:var(--ink-2);
+  border-left:2.5px solid transparent;
+}
+.side a.on{
+  color:var(--accent-ink);font-weight:600;border-left-color:var(--accent);
+  background:var(--accent-soft);
+}
+.side .foot{
+  margin-top:16px;padding:12px 16px 0;border-top:1px solid var(--line-soft);
+  font-size:11px;color:var(--muted);line-height:1.5;
+}
+.main{flex:1;padding:20px 22px;min-width:0}
+.main h4.dh{
+  font-family:"Bai Jamjuree",sans-serif;font-size:17px;font-weight:600;margin:0 0 2px;
+}
+.main p.ds{font-size:12.5px;color:var(--muted);margin:0 0 16px}
+
+.statgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-bottom:18px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--surface)}
+.stat .sl{font-size:11px;color:var(--muted);margin:0 0 3px}
+.stat .sv{
+  font-family:"Bai Jamjuree",sans-serif;font-size:22px;font-weight:700;margin:0;line-height:1.15;
+  font-variant-numeric:tabular-nums;
+}
+.stat.zero{background:var(--good-soft);border-color:transparent}
+.stat.zero .sl,.stat.zero .sv{color:var(--good)}
+
+.todo{display:flex;flex-direction:column;gap:8px}
+.todo .item{
+  display:flex;gap:11px;align-items:flex-start;padding:10px 12px;
+  border:1px solid var(--line);border-radius:9px;font-size:13px;
+}
+.todo .item .mk{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;padding:2px 7px;border-radius:4px;
+  flex:none;margin-top:1px;letter-spacing:.04em;
+}
+.todo .item .mk.now{background:var(--accent-soft);color:var(--accent-ink)}
+.todo .item .mk.ok{background:var(--good-soft);color:var(--good)}
+.todo .item p{margin:0;line-height:1.5}
+.todo .item p b{display:block;font-weight:600;margin-bottom:1px}
+.todo .item p span{color:var(--muted);font-size:12px}
+
+.dropzone{
+  border:1.5px dashed var(--line);border-radius:11px;padding:22px;text-align:center;
+  background:var(--surface-2);margin-bottom:14px;
+}
+.dropzone .dz1{font-size:14px;font-weight:600;margin:0 0 3px}
+.dropzone .dz2{font-size:12px;color:var(--muted);margin:0}
+
+.dtable{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+.dtable th{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+  text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+}
+.dtable td{padding:9px 10px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+.dtable tr:last-child td{border-bottom:0}
+.dtable td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right}
+.dtable td.nm{font-weight:600}
+.dtable tfoot td{border-top:1.5px solid var(--line);border-bottom:0;font-weight:600;padding-top:11px}
+.dtable .mini-pill{font-size:10px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+
+.deskscroll{overflow-x:auto}
+
+.rowbtns{display:flex;gap:9px;margin-top:15px;flex-wrap:wrap}
+.dbtn{
+  font-size:12.5px;font-weight:600;padding:8px 15px;border-radius:8px;
+}
+.dbtn.p{background:var(--ink);color:var(--surface)}
+.dbtn.g{border:1px solid var(--line);color:var(--ink-2)}
+
+.notebar{
+  margin-top:14px;padding:10px 13px;border-radius:9px;font-size:12px;
+  background:var(--accent-soft);color:var(--accent-ink);line-height:1.55;
+}
+.notebar b{font-weight:600}
+
+.deskcap{
+  display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  margin-top:16px;
+}
+.deskcap h4{
+  font-family:"Bai Jamjuree",sans-serif;font-size:16px;font-weight:600;margin:0 0 6px;
+}
+.deskcap p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.6}
+.deskcap .why{font-size:13px;color:var(--muted)}
+.deskcap .why b{color:var(--accent-ink);font-weight:600}
+
+@media (max-width:720px){
+  .deskbody{flex-direction:column}
+  .side{width:100%;border-right:0;border-bottom:1px solid var(--line-soft);padding-bottom:10px}
+  .side nav{flex-direction:row;overflow-x:auto}
+  .side a{border-left:0;border-bottom:2.5px solid transparent;white-space:nowrap}
+  .side a.on{border-left-color:transparent;border-bottom-color:var(--accent)}
+  .side .foot{display:none}
+}
+
+@media (max-width:640px){
+  .masthead{padding:44px 0 32px}
+  .stage-when,.stage-note{margin-left:0}
+  .stage-head{gap:12px}
+  .panel{padding:24px 20px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">มือถือสำหรับชาวไร่ · คอมพิวเตอร์สำหรับโรงงาน</p>
+  <h1>คุ้มปุ๋ย</h1>
+  <p class="sub">ใบสั่งปุ๋ยที่มีคนค้ำ</p>
+  <p class="lede">
+    ชาวไร่ข้าวโพดหวานรับปุ๋ยมาเป็นหนี้ก่อนลงมือปลูก แล้วหว่านตามที่เคยทำกันมา
+    ใส่เกินไปกี่กระสอบไม่มีใครรู้ รู้อีกทีตอนขายผลผลิตว่าเงินถูกหักไปแล้ว
+    แอปนี้ส่งตัวเลขว่าแปลงนี้ใส่เท่าไหร่พอ <em>และเอาเงินของเราค้ำตัวเลขนั้นไว้</em>
+  </p>
+  <div class="chips">
+    <span class="chip mark">ลดไม่ได้ ไม่เก็บเงิน</span>
+    <span class="chip">เก็บเงินหลังปิดบัญชีขายผลผลิต</span>
+    <span class="chip">ไม่แตะสูตรปุ๋ย แตะแค่ปริมาณ</span>
+    <span class="chip">มือถือ 11 หน้า · คอมพิวเตอร์ 4 หน้า</span>
+    <span class="chip">โทนเซจ ฟางข้าว ดินเผา</span>
+  </div>
+  <p class="disclaimer">
+    ตัวเลขในหน้าจอเป็นตัวอย่างเพื่อให้เห็นกลไก — ยอดค่าปุ๋ยต่อไร่และราคารับซื้อจริงของข้าวโพดหวานคู่สัญญายังเป็นข้อมูลปิด ต้องยืนยันกับโรงงานจริงก่อนใช้ในเอกสารเสนอ
+  </p>
+</header>
+
+<!-- ══════════ STAGE 0 ══════════ -->
+<section class="stage">
+  <div class="stage-head">
+    <span class="stage-num">00</span>
+    <h2>ครั้งแรกที่ใช้</h2>
+  </div>
+  <p class="stage-when">ครั้งเดียว — ประมาณ 40 วินาที</p>
+  <p class="stage-note">
+    เราหักเงินจากเขา ให้เขาเซ็นสัญญา และโอนเงินชดเชยให้เขาถ้าเราพลาด — ทั้งสามอย่างต้องรู้ว่าใครคือใคร
+    <strong>แต่ห้ามใช้ระบบสมัครและตั้งรหัสผ่าน</strong> เพราะชาวไร่เปิดแอปปีละ 3–4 ครั้ง ลืมรหัสแน่นอน
+  </p>
+
+  <div class="rack">
+
+    <!-- 0A. เข้าใช้งาน -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>07:58</span><span>▮▮▮ 4G</span></div>
+        <div class="body" style="justify-content:center;gap:20px;padding-top:34px">
+          <div style="text-align:center">
+            <p style="font-family:'Bai Jamjuree',sans-serif;font-size:30px;font-weight:700;margin:0 0 4px">คุ้มปุ๋ย</p>
+            <p class="tiny" style="font-size:13px">ใบสั่งปุ๋ยที่มีคนค้ำ</p>
+          </div>
+
+          <div class="card">
+            <p class="card-sub" style="margin-bottom:7px">เบอร์โทรของคุณ</p>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:23px;font-weight:600;margin:0;letter-spacing:.06em;font-variant-numeric:tabular-nums">08x-xxx-4471</p>
+          </div>
+
+          <div class="card flat" style="text-align:center">
+            <p class="card-sub" style="margin-bottom:8px">ใส่รหัส 6 หลักที่ส่งไปทาง SMS</p>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:27px;font-weight:600;margin:0;letter-spacing:.36em;color:var(--accent-ink)">4 0 2 9 <span style="color:var(--line)">_ _</span></p>
+          </div>
+
+          <span class="btn primary">เข้าใช้งาน</span>
+
+          <div class="guarantee" style="border-style:solid;border-width:1px;border-color:var(--line);background:var(--surface-2)">
+            <p style="color:var(--ink-2)">
+              <strong>ไม่ต้องสมัคร ไม่มีรหัสผ่านให้จำ</strong><br>
+              โรงงานคู่สัญญาลงทะเบียนชื่อคุณไว้แล้ว แค่ยืนยันว่าเบอร์นี้เป็นของคุณ
+            </p>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>เข้าใช้งาน</h4>
+        <p>เบอร์โทร + รหัส SMS จบ — ไม่มีหน้ากรอกข้อมูล 8 ช่อง</p>
+        <p class="why"><b>ทำไม:</b> บัญชีถูกสร้างไว้ล่วงหน้าจาก <b>ทะเบียนคู่สัญญาของโรงงาน</b> ชาวไร่จึงไม่ได้ "สมัคร" แต่ "ยืนยันตัว" — และได้ <b>รหัสเกษตรกรของโรงงาน</b> ติดมาด้วย ซึ่งเป็นกุญแจที่ใช้จับคู่ตอนหักเงินจากใบปิดบัญชี</p>
+      </div>
+    </div>
+
+    <!-- 0B. โปรไฟล์ -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>07:59</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><h3>ข้อมูลของฉัน</h3></div>
+        <div class="body">
+          <div class="card">
+            <p class="card-title" style="margin-bottom:7px">สมพร ใจกล้า</p>
+            <div class="rows">
+              <div class="row"><span class="k">เลขบัตรประชาชน</span><span class="v">x-xxxx-xxxxx-42-1</span></div>
+              <div class="row"><span class="k">เบอร์โทร</span><span class="v">08x-xxx-4471</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <p class="card-title">คู่สัญญากับ</p>
+              <span class="pill go">ยืนยันแล้ว</span>
+            </div>
+            <div class="rows">
+              <div class="row"><span class="k">โรงงาน</span><span class="v">โรงงาน ก.</span></div>
+              <div class="row"><span class="k">รหัสเกษตรกร</span><span class="v">SB-0442</span></div>
+              <div class="row"><span class="k">แปลงในระบบ</span><span class="v">3 แปลง · 22 ไร่</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <p class="card-title">บัญชีรับเงินชดเชย</p>
+              <span class="pill warn">ต้องมี</span>
+            </div>
+            <div class="rows">
+              <div class="row"><span class="k">พร้อมเพย์</span><span class="v">08x-xxx-4471</span></div>
+            </div>
+            <p class="tiny" style="margin-top:7px">ใช้เฉพาะตอนเราคำนวณพลาดและต้องจ่ายคืนคุณ — เราไม่เคยเรียกเก็บเงินจากบัญชีนี้</p>
+          </div>
+
+          <div class="card flat">
+            <p class="card-title" style="margin-bottom:5px">เอกสารที่เซ็นไว้</p>
+            <div class="rows">
+              <div class="row"><span class="k">ฤดูแล้ง 2569 · 3 แปลง</span><span class="v good">มีผล</span></div>
+              <div class="row"><span class="k">ฤดูฝน 2568 · 2 แปลง</span><span class="v">จบแล้ว</span></div>
+            </div>
+          </div>
+
+          <span class="btn ghost">ถอนความยินยอม</span>
+          <p class="tiny">ถอนได้ทุกเมื่อก่อนวันเบิกปุ๋ย ไม่กระทบสัญญารับซื้อกับโรงงาน</p>
+        </div>
+        <div class="tabbar">
+          <span><b>▤</b>หน้าหลัก</span>
+          <span><b>▢</b>แปลง</span>
+          <span><b>₿</b>บัญชี</span>
+          <span class="on"><b>◔</b>ฉัน</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ข้อมูลของฉัน</h4>
+        <p>ตัวตน · โรงงานคู่สัญญา · บัญชีรับเงินชดเชย · เอกสารที่เซ็นไว้</p>
+        <p class="why"><b>ทำไมมีแค่นี้:</b> ไม่มีรูปโปรไฟล์ ไม่มีการตั้งค่า ไม่มีการแจ้งเตือน — <b>ทุกบรรทัดบนหน้านี้มีไว้เพื่อให้เงินเคลื่อนได้ถูกคนและถูกกฎหมาย</b> อย่างอื่นคือเสียงรบกวน</p>
+      </div>
+    </div>
+
+    <!-- 0C. เพิ่มแปลง -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>08:01</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ยืนยันแปลงของคุณ</h3></div>
+        <div class="body">
+          <p class="tiny">โรงงานส่งรายชื่อแปลงคู่สัญญาของคุณมาแล้ว ช่วยยืนยันว่าถูกต้อง</p>
+
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">A-14</p><p class="card-sub">12 ไร่ · ชุดดิน 33</p></div>
+              <span class="box">✓</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">A-15</p><p class="card-sub">6 ไร่ · ชุดดิน 33</p></div>
+              <span class="box">✓</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">B-02</p><p class="card-sub">4 ไร่ · ชุดดิน 40</p></div>
+              <span class="box">✓</span>
+            </div>
+          </div>
+
+          <div class="card flat">
+            <p class="card-title" style="margin-bottom:5px">ไม่ใช่แปลงของคุณ?</p>
+            <p class="tiny">แตะที่แปลงเพื่อเอาออก หรือแจ้งเราให้ตรวจกับโรงงานอีกครั้ง</p>
+          </div>
+
+          <span class="btn primary">ยืนยัน 3 แปลง</span>
+          <p class="tiny">ยังไม่ผูกพันอะไร — ใบสั่งปุ๋ยแต่ละใบต้องยืนยันแยกทีละใบอยู่ดี</p>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ยืนยันแปลง</h4>
+        <p>แปลงมาจากโรงงานอยู่แล้ว ชาวไร่แค่ติ๊กว่าใช่หรือไม่ใช่</p>
+        <p class="why"><b>ทำไม:</b> กันไม่ให้ใครอ้างแปลงของคนอื่นแล้วรับเงินชดเชยแทน — และ <b>ไม่ต้องให้ชาวไร่วาดขอบแปลงบนแผนที่เอง</b> ซึ่งเป็นขั้นตอนที่ทำให้แอปเกษตรตายมานักต่อนัก</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ STAGE 1 ══════════ -->
+<section class="stage">
+  <div class="stage-head">
+    <span class="stage-num">01</span>
+    <h2>ก่อนรับปุ๋ย</h2>
+  </div>
+  <p class="stage-when">วันที่ 0 — ก่อนเปิดฤดู 7–14 วัน</p>
+  <p class="stage-note">
+    ช่วงนี้คือช่วงเดียวที่เปลี่ยนอะไรได้ เพราะหนี้ค่าปุ๋ยถูกตั้งขึ้นตอน <em>รับของ</em> ไม่ใช่ตอนหว่าน
+    ใบสั่งของเราจึงต้องถึงมือชาวไร่ก่อนเขาไปเบิกปุ๋ย
+  </p>
+
+  <div class="rack">
+
+    <!-- 1. หน้าหลัก -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>08:14</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><h3>คุ้มปุ๋ย</h3></div>
+        <div class="body">
+          <p class="hello">สวัสดี <strong>คุณสมพร</strong> · ฤดูแล้ง 2569 รอบที่ 1</p>
+
+          <div class="hero-num">
+            <p class="lbl">ค่าปุ๋ยที่ลดได้ฤดูนี้ ถ้าทำตามใบสั่ง</p>
+            <p class="val">฿1,800</p>
+            <p class="foot">3 แปลง รวม 12 ไร่ · ยังไม่ต้องจ่ายอะไรตอนนี้</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <p class="card-title">ใบสั่งปุ๋ยใหม่ 3 ใบ</p>
+              <span class="pill warn">รอยืนยัน</span>
+            </div>
+            <p class="tiny">ยืนยันก่อน 24 ก.พ. เพื่อให้ทันวันเบิกปุ๋ยของโรงงาน</p>
+          </div>
+
+          <div class="card flat">
+            <div class="card-top">
+              <p class="card-title">โรงงานที่เชื่อมข้อมูล</p>
+            </div>
+            <div class="rows">
+              <div class="row"><span class="k">คู่สัญญา</span><span class="v">โรงงาน ก.</span></div>
+              <div class="row"><span class="k">ใบเบิกปุ๋ย · ใบชั่ง</span><span class="v good">เชื่อมแล้ว</span></div>
+            </div>
+          </div>
+
+          <span class="btn primary">ดูใบสั่งปุ๋ย</span>
+        </div>
+        <div class="tabbar">
+          <span class="on"><b>▤</b>หน้าหลัก</span>
+          <span><b>▢</b>แปลง</span>
+          <span><b>₿</b>บัญชี</span>
+          <span><b>◔</b>ฉัน</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>หน้าหลัก</h4>
+        <p>เปิดมาเจอตัวเลขเดียว คือเงินที่จะประหยัดได้ฤดูนี้ ไม่ใช่กราฟหรือแดชบอร์ด</p>
+        <p class="why"><b>ทำไม:</b> ชาวไร่เปิดแอปปีละ 3–4 ครั้ง ไม่ใช่ทุกวัน หน้าแรกจึงต้องตอบคำถามเดียวว่า <em>ตกลงได้เงินเท่าไหร่ และต้องทำอะไรต่อ</em></p>
+      </div>
+    </div>
+
+    <!-- 2. ใบสั่งปุ๋ย -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>08:15</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ใบสั่งปุ๋ย · แปลง A-14</h3></div>
+        <div class="body">
+          <p class="card-sub">12 ไร่ · กลุ่มชุดดิน 33 · ปลูก 26 ก.พ. 2569</p>
+
+          <div class="swap">
+            <div class="old">
+              <p class="cap">ที่เคยใส่</p>
+              <p class="fig">42<span class="unit-s"> กก./ไร่</span></p>
+            </div>
+            <span class="arw">→</span>
+            <div class="new">
+              <p class="cap">ใบสั่งนี้</p>
+              <p class="fig">34<span class="unit-s"> กก./ไร่</span></p>
+            </div>
+          </div>
+
+          <div class="rows">
+            <div class="row"><span class="k">ลดลง</span><span class="v">8 กก./ไร่</span></div>
+            <div class="row"><span class="k">คิดเป็นเงิน</span><span class="v good">฿150 / ไร่</span></div>
+            <div class="row total"><span class="k">ทั้งแปลง 12 ไร่</span><span class="v good">฿1,800</span></div>
+          </div>
+
+          <div class="guarantee">
+            <p class="g-lbl">คำค้ำของเรา</p>
+            <p>
+              ถ้าทำตามใบสั่งนี้แล้ว <strong>รายได้ต่อไร่ต่ำกว่าแปลงเทียบ</strong> ที่ใส่เท่าเดิม
+              เราจ่ายส่วนต่างให้ <strong>ไม่เกิน ฿1,800</strong>
+              <br>— เท่ากับค่าปุ๋ยที่เราบอกให้คุณไม่ต้องซื้อ
+            </p>
+          </div>
+
+          <p class="tiny">สูตรปุ๋ยยังเป็นสูตรเดิมของโรงงาน เราไม่ได้เปลี่ยนชนิดหรือยี่ห้อ</p>
+          <span class="btn primary">ยืนยันใบสั่งนี้</span>
+          <span class="btn ghost">ขอคุยกับเจ้าหน้าที่ก่อน</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ใบสั่งปุ๋ย — ตัวสินค้า</h4>
+        <p>ปริมาณเดิม → ปริมาณใหม่ → เงินที่ลดได้ → คำค้ำ อ่านจบใน 4 บรรทัด</p>
+        <p class="why"><b>ทำไม:</b> ทุกเจ้าในตลาดขายคำแนะนำเปล่า ๆ ที่ไม่มีใครรับผิด <b>กรอบเส้นประคือสิ่งเดียวที่คู่แข่งไม่มี</b> จึงต้องอยู่บนหน้าจอเดียวกับตัวเลข ไม่ใช่ซ่อนในเงื่อนไข</p>
+      </div>
+    </div>
+
+    <!-- 3. ยินยอม -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>08:16</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ยืนยันใบสั่ง</h3></div>
+        <div class="body">
+          <div class="card flat">
+            <div class="rows">
+              <div class="row"><span class="k">แปลง</span><span class="v">A-14 · 12 ไร่</span></div>
+              <div class="row"><span class="k">ปริมาณตามใบสั่ง</span><span class="v">34 กก./ไร่</span></div>
+              <div class="row"><span class="k">ค่าบริการถ้าสำเร็จ</span><span class="v">25% ของที่ลดได้</span></div>
+              <div class="row total"><span class="k">ประมาณ</span><span class="v">฿450</span></div>
+            </div>
+          </div>
+
+          <div class="consent"><span class="box">✓</span><span>ให้ใช้ <strong>ใบเบิกปุ๋ยและใบชั่ง</strong> ของแปลงผมจากโรงงาน เพื่อคำนวณผล</span></div>
+          <div class="consent"><span class="box">✓</span><span>ให้โรงงาน <strong>หักค่าบริการ</strong> ตอนปิดบัญชีขายผลผลิต เฉพาะเมื่อลดค่าปุ๋ยได้จริง</span></div>
+          <div class="consent"><span class="box">✓</span><span>รับทราบว่า <strong>ถอนได้ทุกเมื่อก่อนวันเบิกปุ๋ย</strong> โดยไม่กระทบสัญญารับซื้อกับโรงงาน</span></div>
+
+          <div class="card">
+            <p class="card-title" style="margin-bottom:5px">ถ้าเราคำนวณพลาด</p>
+            <p class="tiny">เงินชดเชยเข้าบัญชีของคุณโดยตรง <strong>ห้ามนำไปหักกลบกับหนี้ค่าปุ๋ย</strong> — ระบุไว้ในสัญญา</p>
+          </div>
+
+          <span class="btn primary">เซ็นยินยอม</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ยินยอม 3 ข้อ</h4>
+        <p>ใช้ข้อมูล · ให้หักเงินตอนปิดบัญชี · ถอนได้โดยไม่กระทบสัญญารับซื้อ</p>
+        <p class="why"><b>ทำไม:</b> ข้อที่สามคือข้อที่ทำให้ความยินยอมเป็นของจริง — ถ้าปฏิเสธแล้วกระทบโควตาปลูก การยินยอมก็เป็นแค่กระดาษ</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ STAGE 2 ══════════ -->
+<section class="stage">
+  <div class="stage-head">
+    <span class="stage-num">02</span>
+    <h2>ระหว่างฤดู</h2>
+  </div>
+  <p class="stage-when">วันที่ 1–75 — รอบปลูก 65–75 วัน</p>
+  <p class="stage-note">
+    ชาวไร่แทบไม่ต้องเปิดแอปเลยในช่วงนี้ หน้าจอมีไว้ให้ตรวจว่าเรายังตามอยู่ และให้เห็นว่าแปลงเทียบคือแปลงไหน
+  </p>
+
+  <div class="rack">
+
+    <!-- 4. แปลงของฉัน -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>13:02</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><h3>แปลงของฉัน</h3></div>
+        <div class="body">
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">A-14</p><p class="card-sub">12 ไร่ · ชุดดิน 33</p></div>
+              <span class="pill go">ทำตามใบสั่ง</span>
+            </div>
+            <div class="rows">
+              <div class="row"><span class="k">หว่านแล้ว</span><span class="v">34 กก./ไร่</span></div>
+              <div class="row"><span class="k">คาดเก็บเกี่ยว</span><span class="v">8 พ.ค.</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">A-15</p><p class="card-sub">6 ไร่ · ชุดดิน 33</p></div>
+              <span class="pill wait">แปลงเทียบ</span>
+            </div>
+            <p class="tiny">ใช้สูตรและปริมาณเดิม 42 กก./ไร่ — เป็นตัวเทียบว่าการลดของเราทำให้แย่ลงหรือไม่</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div><p class="card-title">B-02</p><p class="card-sub">4 ไร่ · ชุดดิน 40</p></div>
+              <span class="pill wait">ยังไม่รับปาก</span>
+            </div>
+            <p class="tiny">ชุดดินนี้เรามีข้อมูลย้อนหลังไม่ถึง 2 ฤดู จึงยังไม่กล้ารับปากตัวเลขลด — ฤดูนี้เก็บข้อมูลอย่างเดียว ไม่คิดเงิน</p>
+          </div>
+        </div>
+        <div class="tabbar">
+          <span><b>▤</b>หน้าหลัก</span>
+          <span class="on"><b>▢</b>แปลง</span>
+          <span><b>₿</b>บัญชี</span>
+          <span><b>◔</b>ฉัน</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>แปลงของฉัน</h4>
+        <p>สามสถานะเท่านั้น: ทำตามใบสั่ง · แปลงเทียบ · ยังไม่รับปาก</p>
+        <p class="why"><b>ทำไม:</b> ป้าย <b>“ยังไม่รับปาก”</b> คือหน้าตาของกฎที่ว่าโมเดลต้องรู้ตัวว่าไม่แน่ใจ — เราแสดงความไม่มั่นใจให้ลูกค้าเห็น แทนที่จะซ่อนแล้วรับปากมั่ว</p>
+      </div>
+    </div>
+
+    <!-- 5. ติดตาม -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>13:03</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>แปลง A-14</h3></div>
+        <div class="body">
+          <div class="timeline">
+            <div class="tl"><span class="dot"></span><div class="tl-b">
+              <p class="tl-t">เบิกปุ๋ยจากโรงงาน 34 กก./ไร่</p><p class="tl-d">25 ก.พ. · ตรงตามใบสั่ง</p></div></div>
+            <div class="tl"><span class="dot"></span><div class="tl-b">
+              <p class="tl-t">หว่านครั้งที่ 1</p><p class="tl-d">2 มี.ค. · โดรน</p></div></div>
+            <div class="tl"><span class="dot"></span><div class="tl-b">
+              <p class="tl-t">ภาพดาวเทียมล่าสุด</p><p class="tl-d">28 มี.ค. · ต้นโตทันแปลงเทียบ</p></div></div>
+            <div class="tl future"><span class="dot"></span><div class="tl-b">
+              <p class="tl-t">หว่านครั้งที่ 2</p><p class="tl-d">2 เม.ย.</p></div></div>
+            <div class="tl future"><span class="dot"></span><div class="tl-b">
+              <p class="tl-t">เก็บเกี่ยว · ขึ้นตาชั่ง</p><p class="tl-d">8 พ.ค. โดยประมาณ</p></div></div>
+          </div>
+
+          <div class="card flat">
+            <p class="card-title" style="margin-bottom:5px">เทียบกับแปลง A-15</p>
+            <p class="tiny">ฝนแล้งหรือโรคระบาดกดทั้งสองแปลงเท่ากัน ผลต่างจึงเหลือเฉพาะส่วนที่เป็นฝีมือของตัวเลขเรา</p>
+          </div>
+
+          <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div>
+              <p class="card-title">ไนโตรเจนของแปลงนี้</p>
+              <p class="card-sub">เทียบกับคำแนะนำกรมพัฒนาที่ดิน</p>
+            </div>
+            <span style="color:var(--muted);font-size:17px;line-height:1">›</span>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ติดตามแปลง</h4>
+        <p>เส้นเวลาที่บอกว่าเราเห็นอะไรบ้าง และเห็นเมื่อไหร่ · แถวล่างสุดเป็นทางเข้าหน้าไนโตรเจนของแปลงนี้</p>
+        <p class="why"><b>ทำไม:</b> ภาพดาวเทียมเป็นพยานที่โรงงานแก้ไม่ได้ ซื้อไม่ได้ ถ้าตัวเลขปลายฤดูขัดกับสิ่งที่เห็นตลอดฤดู เรารู้ทันที</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ STAGE 3 ══════════ -->
+<section class="stage">
+  <div class="stage-head">
+    <span class="stage-num">03</span>
+    <h2>ปิดบัญชี</h2>
+  </div>
+  <p class="stage-when">วันที่ 75–90 — หลังรถคันสุดท้ายขึ้นตาชั่ง</p>
+  <p class="stage-note">
+    จุดเดียวที่เงินเคลื่อน และเป็นจุดที่ต้องโปร่งใสที่สุด เพราะตัวเลขทุกตัวมาจากเอกสารของโรงงาน ไม่ใช่ของเรา
+  </p>
+
+  <div class="rack">
+
+    <!-- 6. ปิดบัญชี ชนะ -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>17:41</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ปิดบัญชี · A-14</h3></div>
+        <div class="body">
+          <div class="card flat">
+            <p class="card-sub" style="margin-bottom:8px">จากตาชั่งและเครื่องวัดความหวานของโรงงาน</p>
+            <div class="rows">
+              <div class="row"><span class="k">แปลงเรา A-14</span><span class="v">2,340 กก./ไร่ · 14.2</span></div>
+              <div class="row"><span class="k">แปลงเทียบ A-15</span><span class="v">2,310 กก./ไร่ · 14.0</span></div>
+              <div class="row"><span class="k">ผลต่าง</span><span class="v good">+30 กก./ไร่</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top"><p class="card-title">ผลของฤดูนี้</p><span class="pill go">ไม่แย่ลง</span></div>
+            <div class="rows">
+              <div class="row"><span class="k">ค่าปุ๋ยที่ลดได้จริง</span><span class="v good">฿1,800</span></div>
+              <div class="row"><span class="k">ค่าบริการคุ้มปุ๋ย 25%</span><span class="v">−฿450</span></div>
+              <div class="row total"><span class="k">คุณได้เพิ่ม</span><span class="v good">฿1,350</span></div>
+            </div>
+          </div>
+
+          <p class="tiny">หักจากใบปิดบัญชีของโรงงานรอบนี้ ไม่ต้องโอนเงินเอง</p>
+          <span class="btn ghost">ดูที่มาของตัวเลขทุกบรรทัด</span>
+        </div>
+        <div class="tabbar">
+          <span><b>▤</b>หน้าหลัก</span>
+          <span><b>▢</b>แปลง</span>
+          <span class="on"><b>₿</b>บัญชี</span>
+          <span><b>◔</b>ฉัน</span>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ปิดบัญชี — กรณีสำเร็จ</h4>
+        <p>ตัวเลขจากตาชั่งโรงงานก่อน แล้วค่อยถึงเงิน</p>
+        <p class="why"><b>ทำไม:</b> เรียงแบบนี้เพราะที่มาของตัวเลขสำคัญกว่าตัวเงิน ถ้าลูกค้าไม่เชื่อบรรทัดบน เขาจะไม่เชื่อบรรทัดล่าง</p>
+      </div>
+    </div>
+
+    <!-- 7. ปิดบัญชี แพ้ -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>17:44</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ปิดบัญชี · C-07</h3></div>
+        <div class="body">
+          <div class="card flat">
+            <p class="card-sub" style="margin-bottom:8px">จากตาชั่งและเครื่องวัดความหวานของโรงงาน</p>
+            <div class="rows">
+              <div class="row"><span class="k">แปลงเรา C-07</span><span class="v">2,090 กก./ไร่ · 13.6</span></div>
+              <div class="row"><span class="k">แปลงเทียบ C-08</span><span class="v">2,260 กก./ไร่ · 14.1</span></div>
+              <div class="row"><span class="k">ผลต่าง</span><span class="v owe">−170 กก./ไร่</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top"><p class="card-title">ผลของฤดูนี้</p><span class="pill owe">เราคำนวณพลาด</span></div>
+            <div class="rows">
+              <div class="row"><span class="k">รายได้ที่หายไป</span><span class="v owe">฿1,240</span></div>
+              <div class="row"><span class="k">ค่าปุ๋ยที่ประหยัดได้</span><span class="v">฿900</span></div>
+              <div class="row"><span class="k">ค่าบริการคุ้มปุ๋ย</span><span class="v good">฿0</span></div>
+              <div class="row total"><span class="k">เราจ่ายคุณ</span><span class="v owe">฿340</span></div>
+            </div>
+          </div>
+
+          <p class="tiny">เข้าบัญชีของคุณโดยตรงภายใน 15 วัน <strong>ไม่หักกลบกับหนี้ค่าปุ๋ย</strong> — สุทธิแล้วคุณไม่ขาดทุนจากการลดปุ๋ยครั้งนี้</p>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ปิดบัญชี — กรณีเราพลาด</h4>
+        <p>หน้าจอนี้ต้องมี และต้องออกแบบให้ดีเท่ากรณีสำเร็จ</p>
+        <p class="why"><b>ทำไม:</b> ถ้าหน้าจอนี้ดูซับซ้อนหรือหลบ ๆ ซ่อน ๆ คำค้ำก็ไม่มีความหมาย <b>สินค้าของเราคือความน่าเชื่อถือของหน้าจอนี้</b></p>
+      </div>
+    </div>
+
+    <!-- 8. ไนโตรเจน -->
+    <div class="unit">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>17:48</span><span>▮▮▮ 4G</span></div>
+        <div class="appbar"><span class="back">←</span><h3>ไนโตรเจน · A-14</h3></div>
+        <div class="body">
+          <p class="card-sub">แปลง A-14 · กลุ่มชุดดิน 33 · ฤดูแล้ง 2569</p>
+
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bl"><span>เคยใส่</span><span>42 กก.N/ไร่</span></div>
+              <div class="track"><div class="fill was" style="width:100%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bl"><span>ฤดูนี้ใส่จริง</span><span>34 กก.N/ไร่</span></div>
+              <div class="track"><div class="fill now" style="width:81%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bl"><span>คำแนะนำกรมพัฒนาที่ดิน</span><span>30 กก.N/ไร่</span></div>
+              <div class="track"><div class="fill rec" style="width:71%"></div></div>
+            </div>
+          </div>
+
+          <div class="card flat">
+            <div class="rows">
+              <div class="row"><span class="k">ยังเกินคำแนะนำ</span><span class="v">4 กก.N/ไร่</span></div>
+              <div class="row"><span class="k">ไนโตรเจนที่ไม่ต้องใส่</span><span class="v good">96 กก.</span></div>
+              <div class="row"><span class="k">เทียบเป็นก๊าซเรือนกระจก</span><span class="v good">≈ 410–450 กก.</span></div>
+            </div>
+          </div>
+
+          <p class="tiny">เราไม่ลดรวดเดียวถึงคำแนะนำ เพราะรับปากเฉพาะระดับที่กล้าค้ำด้วยเงิน ยิ่งเก็บข้อมูลได้มาก ยิ่งลดได้ลึกขึ้น</p>
+        </div>
+      </div></div>
+      <div class="cap-block">
+        <h4>ไนโตรเจนของแปลง</h4>
+        <p>กก.ไนโตรเจน/ไร่ ที่ใส่จริง เทียบคำแนะนำกรมพัฒนาที่ดิน แยกรายกลุ่มชุดดิน · เปิดจากหน้าติดตามแปลง จึงมีปุ่มย้อนกลับและไม่มีแท็บล่าง</p>
+        <p class="why"><b>ทำไม:</b> นี่คือ <b>ตัวเลขที่ประเทศไทยยังไม่มี</b> และเป็นของที่ส่งมอบได้ตั้งแต่ฤดูแรก — ผูกกับ SDG 2.4 ตัวชี้วัด 2.4.1 โดยตรง</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ WHAT'S NOT HERE ══════════ -->
+<section class="panel">
+  <h2>สิ่งที่ตั้งใจไม่ใส่ในแอป</h2>
+  <p class="intro">
+    ทุกอย่างที่เพิ่มเข้ามาคือเหตุผลใหม่ให้ชาวไร่เลิกใช้ แอปนี้จึงถูกตัดจนเหลือเฉพาะสิ่งที่ทำให้ตัดสินใจและรับเงินได้
+  </p>
+  <div class="split">
+    <div class="mini no">
+      <h5>ตัดออก</h5>
+      <ul>
+        <li><b>ไม่มีการกรอกข้อมูลรายวัน</b> — ข้อมูลทั้งหมดมาจากใบเบิกปุ๋ยและตาชั่งของโรงงานที่มีอยู่แล้ว</li>
+        <li><b>ไม่มีแดชบอร์ดหรือกราฟรายสัปดาห์</b> — ชาวไร่เปิดแอปปีละ 3–4 ครั้ง ไม่ใช่ทุกวัน</li>
+        <li><b>ไม่มีการเปลี่ยนสูตรหรือยี่ห้อปุ๋ย</b> — สูตรเป็นสิ่งเดียวที่โรงงานหวง เราแตะแค่ปริมาณ</li>
+        <li><b>ไม่มีการชำระเงินในแอป</b> — หักผ่านใบปิดบัญชีของโรงงานที่มีอยู่แล้ว ไม่ต้องผูกบัญชีหรือบัตร</li>
+        <li><b>ไม่มีเรื่องเพดานความรับผิดหรือเงินกันสำรอง</b> — เป็นเรื่องภายในของเรา ไม่ใช่ภาระของลูกค้า</li>
+        <li><b>ไม่มีรหัสผ่านและไม่มีหน้าสมัคร</b> — เปิดแอปปีละ 3–4 ครั้ง ลืมรหัสแน่นอน ใช้เบอร์โทร + รหัส SMS แทน</li>
+        <li><b>ไม่ต้องวาดขอบแปลงบนแผนที่เอง</b> — แปลงมาจากทะเบียนคู่สัญญาของโรงงาน ชาวไร่แค่ติ๊กยืนยัน</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h5>เก็บไว้เพราะจำเป็นจริง</h5>
+      <ul>
+        <li><b>คำค้ำอยู่หน้าเดียวกับตัวเลข</b> — คู่แข่งทุกเจ้าให้คำแนะนำฟรี สิ่งเดียวที่ต่างคือมีคนรับผิด</li>
+        <li><b>ป้าย “ยังไม่รับปาก”</b> — แสดงความไม่มั่นใจของโมเดลให้เห็น ดีกว่ารับปากมั่วแล้วจ่ายจนเจ๊ง</li>
+        <li><b>หน้าจอกรณีเราพลาด</b> — ต้องออกแบบดีเท่ากรณีสำเร็จ ไม่งั้นคำค้ำไม่มีน้ำหนัก</li>
+        <li><b>ปุ่มถอนได้ก่อนวันเบิกปุ๋ย</b> — ทำให้ความยินยอมเป็นของจริง ไม่ใช่พิธีกรรม</li>
+        <li><b>หน้าไนโตรเจน</b> — ของที่ส่งมอบได้ตั้งแต่ฤดูแรก แม้ยังไม่ทันลดค่าปุ๋ย</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FACTORY SIDE ══════════ -->
+<section class="stage" style="border-bottom:0">
+  <div class="stage-head">
+    <span class="stage-num">04</span>
+    <h2>ฝั่งโรงงาน</h2>
+  </div>
+  <p class="stage-when">บนคอมพิวเตอร์ — ฝ่ายจัดหาวัตถุดิบ และฝ่ายบัญชี</p>
+  <p class="stage-note">
+    โรงงาน <strong>ไม่ใช่ลูกค้าและไม่จ่ายอะไรเลยสักบาท</strong> แต่เป็นทั้งต้นทางข้อมูลและช่องทางหักเงิน
+    หน้าจอฝั่งนี้จึงมีเป้าหมายเดียว คือ <em>ทำให้การร่วมมือกับเราใช้เวลาน้อยกว่าการปฏิเสธ</em>
+  </p>
+
+  <!-- F1 ภาพรวม -->
+  <div class="deskunit">
+    <div class="window">
+      <div class="winbar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="url">khumpui.co.th / factory / โรงงาน ก.</span>
+      </div>
+      <div class="deskbody">
+        <aside class="side">
+          <p class="brand">คุ้มปุ๋ย<small>ระบบสำหรับโรงงาน</small></p>
+          <nav>
+            <a class="on">ภาพรวมฤดู</a>
+            <a>นำเข้าข้อมูล</a>
+            <a>ทะเบียนชาวไร่</a>
+            <a>รายการหักปลายฤดู</a>
+            <a>ตารางไนโตรเจน</a>
+            <a>ข้อตกลงการใช้ข้อมูล</a>
+          </nav>
+          <p class="foot">โรงงาน ก.<br>ฤดูแล้ง 2569 · รอบ 1</p>
+        </aside>
+        <div class="main">
+          <h4 class="dh">ภาพรวมฤดู</h4>
+          <p class="ds">ฤดูแล้ง 2569 รอบที่ 1 · เปิดฤดู 26 ก.พ. · คาดปิดบัญชี 12 พ.ค.</p>
+
+          <div class="statgrid">
+            <div class="stat"><p class="sl">ชาวไร่ที่ยินยอม</p><p class="sv">58 <span style="font-size:12px;font-weight:500">ราย</span></p></div>
+            <div class="stat"><p class="sl">พื้นที่ในระบบ</p><p class="sv">1,180 <span style="font-size:12px;font-weight:500">ไร่</span></p></div>
+            <div class="stat"><p class="sl">คาดลดค่าปุ๋ยได้</p><p class="sv">฿177,000</p></div>
+            <div class="stat zero"><p class="sl">ค่าใช้จ่ายของโรงงาน</p><p class="sv">฿0</p></div>
+          </div>
+
+          <div class="todo">
+            <div class="item"><span class="mk ok">เสร็จ</span><p><b>ใบเบิกปุ๋ยย้อนหลัง 4 ฤดู</b><span>นำเข้าแล้ว 2,410 รายการ · จับคู่กับแปลงสำเร็จ 100%</span></p></div>
+            <div class="item"><span class="mk now">ทำต่อ</span><p><b>ใบเบิกปุ๋ยฤดูนี้ ยังขาด 6 แปลง</b><span>ต้องได้ก่อน 24 ก.พ. เพื่อยืนยันว่าเบิกตรงตามใบสั่ง</span></p></div>
+            <div class="item"><span class="mk">รอ</span><p><b>บันทึกตาชั่งและความหวาน</b><span>ส่งได้หลังรถคันสุดท้ายขึ้นตาชั่ง ประมาณ 8–12 พ.ค.</span></p></div>
+          </div>
+
+          <div class="notebar">
+            <b>โรงงานไม่มีรายการต้องชำระในระบบนี้</b> — ค่าบริการหักจากยอดที่โรงงานต้องจ่ายชาวไร่ ตามหนังสือยินยอมของชาวไร่แต่ละราย
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deskcap">
+      <div>
+        <h4>ภาพรวมฤดู</h4>
+        <p>สถานะข้อมูล 3 ก้อน และรายการที่ต้องทำต่อ เรียงตามวันครบกำหนด</p>
+      </div>
+      <div>
+        <p class="why"><b>ทำไมมีช่อง ฿0 อยู่ในนั้น:</b> คำถามแรกที่ทุกโรงงานถามคือ <em>“แล้วเราต้องจ่ายเท่าไหร่”</em> — ตอบด้วยตัวเลขบนหน้าจอแรกเลย ดีกว่าให้เขาต้องเปิดสัญญาหา</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- F2 นำเข้าข้อมูล -->
+  <div class="deskunit">
+    <div class="window">
+      <div class="winbar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="url">khumpui.co.th / factory / import</span>
+      </div>
+      <div class="deskbody">
+        <aside class="side">
+          <p class="brand">คุ้มปุ๋ย<small>ระบบสำหรับโรงงาน</small></p>
+          <nav>
+            <a>ภาพรวมฤดู</a>
+            <a class="on">นำเข้าข้อมูล</a>
+            <a>ทะเบียนชาวไร่</a>
+            <a>รายการหักปลายฤดู</a>
+            <a>ตารางไนโตรเจน</a>
+            <a>ข้อตกลงการใช้ข้อมูล</a>
+          </nav>
+          <p class="foot">โรงงาน ก.<br>ฤดูแล้ง 2569 · รอบ 1</p>
+        </aside>
+        <div class="main">
+          <h4 class="dh">นำเข้าข้อมูล</h4>
+          <p class="ds">ใช้ไฟล์ที่โรงงานทำอยู่แล้ว ไม่ต้องแก้รูปแบบ ไม่ต้องกรอกใหม่</p>
+
+          <div class="dropzone">
+            <p class="dz1">ลากไฟล์มาวาง หรือเลือกจากเครื่อง</p>
+            <p class="dz2">รับ .xlsx .csv และไฟล์ส่งออกจากระบบบัญชีที่ใช้อยู่ — หรือให้ฝ่ายไอทีเชื่อมระบบตรงครั้งเดียวจบ</p>
+          </div>
+
+          <div class="deskscroll">
+            <table class="dtable">
+              <thead>
+                <tr><th>คอลัมน์ในไฟล์ของคุณ</th><th>ระบบอ่านเป็น</th><th>สถานะ</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="nm">รหัสสมาชิก</td><td>รหัสเกษตรกร</td><td><span class="mini-pill pill go">จับคู่แล้ว</span></td></tr>
+                <tr><td class="nm">แปลงที่</td><td>รหัสแปลง</td><td><span class="mini-pill pill go">จับคู่แล้ว</span></td></tr>
+                <tr><td class="nm">สูตร / น้ำหนักเบิก</td><td>สูตรปุ๋ย · กก. ที่จ่ายออก</td><td><span class="mini-pill pill go">จับคู่แล้ว</span></td></tr>
+                <tr><td class="nm">วันที่เบิก</td><td>วันที่จ่ายปุ๋ย</td><td><span class="mini-pill pill go">จับคู่แล้ว</span></td></tr>
+                <tr><td class="nm">พิกัด / หมู่บ้าน</td><td>ตำแหน่งแปลง</td><td><span class="mini-pill pill warn">ต้องยืนยัน 6 แปลง</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="rowbtns">
+            <span class="dbtn p">ยืนยันการจับคู่</span>
+            <span class="dbtn g">ให้เราจับคู่ให้</span>
+          </div>
+
+          <div class="notebar">
+            <b>ข้อมูลของโรงงานคุณไม่ถูกนำไปรวมกับโรงงานอื่น</b> — พิกัดแปลงคู่สัญญาคือความลับทางการแข่งขัน ระบุเป็นข้อสัญญา ไม่ใช่คำสัญญาปากเปล่า
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deskcap">
+      <div>
+        <h4>นำเข้าข้อมูล</h4>
+        <p>รับไฟล์ที่เขามีอยู่ แล้วให้ระบบเดาว่าคอลัมน์ไหนคืออะไร ให้คนแค่กดยืนยัน</p>
+      </div>
+      <div>
+        <p class="why"><b>ทำไมต้องมีบรรทัดเรื่องข้อมูลไม่รวมกัน:</b> โรงงานข้าวโพดหวาน <b>แย่งซื้อวัตถุดิบจากชาวไร่กลุ่มเดียวกัน</b> พิกัดแปลงคู่สัญญาจึงเป็นความลับสูงสุด — ถ้าไม่พูดตรงนี้ให้ชัด ดีลตายตั้งแต่หน้าแรก</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- F3 รายการหักปลายฤดู -->
+  <div class="deskunit">
+    <div class="window">
+      <div class="winbar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="url">khumpui.co.th / factory / settlement</span>
+      </div>
+      <div class="deskbody">
+        <aside class="side">
+          <p class="brand">คุ้มปุ๋ย<small>ระบบสำหรับโรงงาน</small></p>
+          <nav>
+            <a>ภาพรวมฤดู</a>
+            <a>นำเข้าข้อมูล</a>
+            <a>ทะเบียนชาวไร่</a>
+            <a class="on">รายการหักปลายฤดู</a>
+            <a>ตารางไนโตรเจน</a>
+            <a>ข้อตกลงการใช้ข้อมูล</a>
+          </nav>
+          <p class="foot">โรงงาน ก.<br>ฤดูแล้ง 2569 · รอบ 1</p>
+        </aside>
+        <div class="main">
+          <h4 class="dh">รายการหักปลายฤดู</h4>
+          <p class="ds">เพิ่มอีกหนึ่งบรรทัดในใบปิดบัญชีที่ฝ่ายบัญชีทำอยู่แล้ว · เฉพาะรายที่เซ็นยินยอมและลดค่าปุ๋ยได้จริง</p>
+
+          <div class="deskscroll">
+            <table class="dtable">
+              <thead>
+                <tr>
+                  <th>รหัสเกษตรกร</th><th>ชื่อ</th><th>แปลง</th>
+                  <th style="text-align:right">ค่าปุ๋ยที่ลดได้</th>
+                  <th style="text-align:right">หักค่าบริการ</th>
+                  <th>สถานะ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="nm">SB-0442</td><td>สมพร ใจกล้า</td><td>A-14</td><td class="num">฿1,800</td><td class="num">฿450</td><td><span class="mini-pill pill go">หักได้</span></td></tr>
+                <tr><td class="nm">SB-0451</td><td>บุญมา แสงทอง</td><td>D-03</td><td class="num">฿1,320</td><td class="num">฿330</td><td><span class="mini-pill pill go">หักได้</span></td></tr>
+                <tr><td class="nm">SB-0467</td><td>วิไล พันธุ์ดี</td><td>C-07</td><td class="num">฿900</td><td class="num">฿0</td><td><span class="mini-pill pill owe">เราจ่ายคืน</span></td></tr>
+                <tr><td class="nm">SB-0470</td><td>ประสิทธิ์ มั่นคง</td><td>B-02</td><td class="num">—</td><td class="num">฿0</td><td><span class="mini-pill pill wait">ยังไม่รับปาก</span></td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="3">รวม 58 ราย</td><td class="num">฿171,400</td><td class="num">฿41,850</td><td></td></tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="rowbtns">
+            <span class="dbtn p">ส่งออกไฟล์เข้าระบบบัญชี</span>
+            <span class="dbtn g">พิมพ์รายการ</span>
+          </div>
+
+          <div class="notebar">
+            แถว <b>“เราจ่ายคืน”</b> คือรายที่ตัวเลขของเราพลาด — <b>โรงงานไม่ต้องทำอะไรกับแถวนี้</b> เราโอนเข้าพร้อมเพย์ของชาวไร่โดยตรง ไม่ผ่านใบปิดบัญชี และห้ามนำไปหักกลบหนี้ค่าปุ๋ย
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deskcap">
+      <div>
+        <h4>รายการหักปลายฤดู</h4>
+        <p>ตารางเดียวที่ฝ่ายบัญชีต้องดู แล้วกดส่งออกเข้าระบบที่เขาใช้อยู่</p>
+      </div>
+      <div>
+        <p class="why"><b>ทำไมแถว “เราจ่ายคืน” ต้องโผล่ทั้งที่โรงงานไม่ต้องทำอะไร:</b> เพื่อให้โรงงานเห็นว่า <b>เรารับผิดจริงและไม่ผลักภาระให้เขา</b> — ถ้าซ่อนแถวนี้ ระบบจะดูเหมือนมีแต่ขาเก็บเงิน</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- F4 ตารางไนโตรเจน -->
+  <div class="deskunit">
+    <div class="window">
+      <div class="winbar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="url">khumpui.co.th / factory / nitrogen</span>
+      </div>
+      <div class="deskbody">
+        <aside class="side">
+          <p class="brand">คุ้มปุ๋ย<small>ระบบสำหรับโรงงาน</small></p>
+          <nav>
+            <a>ภาพรวมฤดู</a>
+            <a>นำเข้าข้อมูล</a>
+            <a>ทะเบียนชาวไร่</a>
+            <a>รายการหักปลายฤดู</a>
+            <a class="on">ตารางไนโตรเจน</a>
+            <a>ข้อตกลงการใช้ข้อมูล</a>
+          </nav>
+          <p class="foot">โรงงาน ก.<br>ฤดูแล้ง 2569 · รอบ 1</p>
+        </aside>
+        <div class="main">
+          <h4 class="dh">ตารางไนโตรเจนรายกลุ่มชุดดิน</h4>
+          <p class="ds">สิ่งที่โรงงานได้ตอบแทนจากการร่วมมือ — ตัวเลขที่ประเทศไทยยังไม่มี</p>
+
+          <div class="deskscroll">
+            <table class="dtable">
+              <thead>
+                <tr>
+                  <th>กลุ่มชุดดิน</th><th style="text-align:right">แปลง</th><th style="text-align:right">ไร่</th>
+                  <th style="text-align:right">ใส่จริงเฉลี่ย</th>
+                  <th style="text-align:right">คำแนะนำ พด.</th>
+                  <th style="text-align:right">ส่วนต่าง</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="nm">33</td><td class="num">31</td><td class="num">612</td><td class="num">41.8</td><td class="num">30</td><td class="num" style="color:var(--owe)">+11.8</td></tr>
+                <tr><td class="nm">35</td><td class="num">14</td><td class="num">288</td><td class="num">36.2</td><td class="num">32</td><td class="num" style="color:var(--owe)">+4.2</td></tr>
+                <tr><td class="nm">40</td><td class="num">9</td><td class="num">184</td><td class="num">28.5</td><td class="num">28</td><td class="num">+0.5</td></tr>
+                <tr><td class="nm">55</td><td class="num">4</td><td class="num">96</td><td class="num">24.0</td><td class="num">26</td><td class="num" style="color:var(--good)">−2.0</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td>รวม</td><td class="num">58</td><td class="num">1,180</td><td class="num">37.4</td><td class="num">30.1</td><td class="num" style="color:var(--owe)">+7.3</td></tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="rowbtns">
+            <span class="dbtn g">ส่งออกเป็นไฟล์</span>
+            <span class="dbtn g">ดูย้อนหลังรายฤดู</span>
+          </div>
+
+          <div class="notebar">
+            <b>รายงานนี้ไม่มีชื่อเกษตรกรและไม่มีรหัสแปลง</b> — สรุปที่ระดับกลุ่มชุดดินเท่านั้น ย้อนกลับไปหาว่าแปลงไหนของใครไม่ได้
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deskcap">
+      <div>
+        <h4>ตารางไนโตรเจน</h4>
+        <p>กิโลไนโตรเจน/ไร่ ที่ใส่จริง เทียบคำแนะนำกรมพัฒนาที่ดิน แยกรายกลุ่มชุดดิน พร้อมส่วนต่าง</p>
+      </div>
+      <div>
+        <p class="why"><b>ทำไมห้ามรายงานรายบุคคล:</b> คนที่ขวางเราได้ที่สุดคือ <b>นักส่งเสริมของโรงงาน</b> ซึ่งเป็นเจ้าของสูตรเดิม ถ้าตารางนี้ชี้ได้ว่าแปลงไหนใส่เกิน มันจะกลายเป็นเครื่องมือประเมินตัวเขา แล้วเขาจะไม่พาเราเข้าแปลงอีกเลย</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>โรงงานได้อะไร ถ้าไม่ได้เงิน</h2>
+  <p class="intro">
+    คำถามที่ต้องตอบได้ในประโยคเดียวตอนนำเสนอ — เพราะถ้าโรงงานไม่ร่วม เราไม่มีทั้งข้อมูลและช่องทางหักเงิน
+  </p>
+  <div class="split">
+    <div class="mini">
+      <h5>ได้</h5>
+      <ul>
+        <li><b>ตัวเลขไนโตรเจนที่ประเทศยังไม่มี</b> ใช้ตั้งงบสำรองจ่ายค่าปุ๋ยฤดูถัดไปได้จริง</li>
+        <li><b>ชาวไร่คู่สัญญาหนี้ค่าปัจจัยการผลิตลดลง</b> ความเสี่ยงเก็บหนี้ไม่ได้ลดตาม</li>
+        <li><b>เป็นจุดขายตอนแย่งชาวไร่กับโรงงานคู่แข่ง</b> โดยไม่ต้องขึ้นราคารับซื้อ</li>
+        <li><b>งานเพิ่มคือส่งไฟล์ที่มีอยู่แล้ว และเพิ่มบรรทัดเดียวในใบปิดบัญชี</b></li>
+      </ul>
+    </div>
+    <div class="mini no">
+      <h5>ไม่ได้ และเราไม่หลอกว่าได้</h5>
+      <ul>
+        <li><b>ไม่ได้เงินที่ประหยัดจากค่าปุ๋ย</b> — เงินก้อนนั้นเป็นของชาวไร่ เพราะเขาเป็นคนที่หนี้ลดลง</li>
+        <li><b>ไม่ได้สิทธิ์เห็นข้อมูลรายบุคคล</b> — แลกมากับการที่นักส่งเสริมยอมให้ความร่วมมือ</li>
+        <li><b>ไม่ได้ควบคุมตัวเลขที่เราออกให้ชาวไร่</b> — ถ้าโรงงานแก้ตัวเลขได้ คำค้ำของเราก็ไม่มีความหมาย</li>
+      </ul>
+    </div>
+  </div>
+  <p class="intro" style="margin:22px 0 0">
+    <strong>ข้อสำคัญที่ต้องยอมรับตรง ๆ:</strong> ถ้าโรงงานไม่ยอมร่วมเลย เรายังขายบริการให้ชาวไร่ได้
+    แต่ต้องเปลี่ยนไปเก็บเงินผ่านพร้อมเพย์หรือหัวหน้ากลุ่ม ซึ่งเก็บได้ไม่ครบ — และ
+    <strong>ข้อมูลใบเบิกปุ๋ยกับตาชั่งยังต้องพึ่งโรงงานอยู่ดี</strong> จุดนี้เลี่ยงไม่ได้
+  </p>
+</section>
+
+<footer>
+  หน้าจอตัวอย่างสำหรับข้อเสนอ Sriracha Hackathon 2026 · หัวข้อ Sustainable Agriculture &amp; Food Innovation · ประเภท Ideate
+</footer>
+
+</div>
