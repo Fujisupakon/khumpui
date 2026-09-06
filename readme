@@ -1,0 +1,28 @@
+🌽 คุ้มปุ๋ย (Khum Pui)
+Guaranteed Fertilizer Prescriptions: Reducing Debt, Saving Soil.
+![Image](https://img.shields.io/badge/Status-Prototype-gold.svg)
+![Image](https://img.shields.io/badge/Hackathon-Sriracha%202026-green.svg)
+![Image](https://img.shields.io/badge/Category-Sustainable%20Agri-orange.svg)
+คุ้มปุ๋ย (Khum Pui) is a high-fidelity UI/UX prototype for a data-driven agricultural service. It tackles the issue of "preventative over-fertilization" in sweet corn contract farming by providing precise fertilizer prescriptions backed by a financial guarantee.
+View Live Demo (Note: Replace with your actual GitHub Pages link)
+📖 The Vision
+The Problem
+Farmers often apply more fertilizer than needed because they fear yield loss. Since they take fertilizer on credit from the factory, this "preventative over-fertilization" leads to:
+Mounting Debt: Farmers pay for bags of fertilizer they don't actually need.
+Soil Degradation: Excess Nitrogen damages the land and increases GHG emissions.
+Trust Gap: Farmers don't trust scientific "recommendations" unless there is skin in the game.
+The Solution
+We provide a Fertilizer Prescription with a Guarantee.
+Data-Driven: Prescriptions are based on soil groups and satellite imagery.
+Financial Safety Net: If a farmer follows our prescription and their yield drops below a traditional control plot, we pay the difference.
+Zero Upfront Cost: Our service fee is only collected if the farmer successfully saves money on fertilizer.
+📱 Features
+1. Farmer Experience (Mobile)
+Zero-Friction Access: No passwords. Uses Phone + SMS OTP tied to factory records.
+The Guarantee Box: A clear, dashed-border UI element that explicitly states the compensation amount.
+Satellite Tracking: Real-time crop health monitoring to provide peace of mind.
+Transparent Settlement: Visualizes earnings from fertilizer savings vs. compensation in case of yield loss.
+2. Factory Portal (Web)
+Seamless Integration: Factories upload existing .xlsx or .csv files. No new data entry required.
+Zero Cost to Factory: The service is free for factories; we act as a value-added service for their farmers.
+Nitrogen Dashboard: Provides soil-group-level data on Nitrogen efficiency for ESG and sustainability reporting (SDG 2.4).
